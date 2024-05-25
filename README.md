@@ -49,7 +49,7 @@ The scoring method was suggested and revised by Yashraj Kulkarni, a postdoctoral
 
 1. Retrieve all structural data currently in the database from GPCRdb via the API. Filter structures to meet specific criteria.
 2. Extract the list of interactions between the receptor and the peptide for each structure. Retain specific residue pairs.
-3. Compute the median and standard deviation for the C$ lpha$ distances and the C$ lpha$-C$eta$ angles. Calculate count and frequency values.
+3. Compute the median and standard deviation for the Cα - Cα distance and the Cα - Cβ angles. Calculate count and frequency values.
 
 ### Calculate Cα, Cβ statistics based on the given backbones
 
