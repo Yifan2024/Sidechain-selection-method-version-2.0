@@ -21,42 +21,76 @@ This Jupyter Notebook contains the implementation of the Sidechain Selection Met
 - Jupyter Notebook
 - Required Python libraries (listed in the `requirements.txt` file)
 
-### Installation
-
-1. Clone this repository:
-   ```sh
-   git clone <repository_url>
-   ```
-2. Navigate to the project directory:
-   ```sh
-   cd Sidechain-Selection-Method
-   ```
-3. Install the required libraries:
-   ```sh
-   pip install -r requirements.txt
-   ```
-
-### Usage
-
-1. Open the Jupyter Notebook:
-   ```sh
-   jupyter notebook Sidechain\ selection\ method-version\ 2.0.ipynb
-   ```
-2. Execute the cells sequentially to run the sidechain selection method.
-
 ## Methodology
 
-### Algorithm
+### Data Acquisition and Contributors
 
-- **Step 1**: Load and preprocess protein structure data.
-- **Step 2**: Identify potential sidechain candidates for each residue.
-- **Step 3**: Apply optimization algorithms to select the best sidechains based on predefined criteria.
-- **Step 4**: Validate the selected sidechains using structural and energetic analyses.
+#### Database overview
 
-### Data
+GPCRdb, or G Protein-Coupled Receptor Database, is a comprehensive database that focuses on G protein-coupled receptors (GPCRs). This database provides detailed information on various aspects related to GPCRs, including genetic variants, drugs, disease indications, ligands, structures, and interactions. Additionally, GPCRdb has been continuously updated and improved over the years, incorporating advanced technologies like AlphaFold2 for state-specific structure models, enhancing the understanding of GPCR biology and drug development.
 
-- Input data: Protein structures in PDB format.
-- Output data: Optimized protein structures with selected sidechains.
+![GPCRdb webpage](image8.png)
+
+#### API Access
+
+GPCRdb API is provided by Jimmy Caroli, a website engineer from David’s research group.
+
+#### Backbone Complex Data
+
+All backbone complex data utilized for validation and prediction processes are contributed by Arman Simonyan, a PhD candidate from David’s research group.
+
+#### Scoring Method
+
+The scoring method was suggested and revised by Yashraj Kulkarni, a postdoctoral researcher from David’s research group.
+
+### Generate peptide/receptor residue pair interaction library
+
+#### Steps:
+
+1. Retrieve all structural data currently in the database from GPCRdb via the API. Filter structures to meet specific criteria.
+2. Extract the list of interactions between the receptor and the peptide for each structure. Retain specific residue pairs.
+3. Compute the median and standard deviation for the C$ lpha$ distances and the C$ lpha$-C$eta$ angles. Calculate count and frequency values.
+
+### Calculate Cα, Cβ statistics based on the given backbones
+
+#### Steps:
+
+1. During the validation and prediction processes, calculations of the backbones' Cα and Cβ statistics are performed.
+2. Use the API to obtain the corresponding generic residue numbers for each receptor residue.
+3. Extract information from receptor and ligand chains.
+
+#### Formulas:
+
+-  Cα - Cα distance 
+-  Cα - Cβ angle
+
+### Achieve Ligand Residue Prediction and Sequence Scoring
+
+1. Add a new column "peptide\_amino\_acid" and include all 20 natural amino acid types for each receptor pair.
+2. Group and aggregate based on residue number and peptide amino acid.
+3. Select the peptide amino acids with the top two highest frequency values as the most likely amino acids for each position.
+
+### Validation Process
+
+1. Select the interacting part of the peptide sequence in each structure file for validation.
+2. Retain cases where the effective length of both the predicted and original peptide sequences is at least 5.
+
+#### Evaluation Methods:
+
+- Identity
+- Similarity
+- Blosum62\_m
+
+### Prediction Process
+
+1. Calculate Cα and Cβ statistics based on the given backbones and achieve ligand residue prediction and sequence scoring.
+
+### Supplementary clarification
+
+- Permutation and combination during the prediction process.
+- Collecting true peptide sequence during validation.
+- Algorithm limitation regarding unnatural amino acids.
+- Additional scoring methods for analyzing the predicted sequence.
 
 ## Results
 
