@@ -29,7 +29,7 @@ This Jupyter Notebook contains the implementation of the Sidechain Selection Met
 
 GPCRdb, or G Protein-Coupled Receptor Database, is a comprehensive database that focuses on G protein-coupled receptors (GPCRs). This database provides detailed information on various aspects related to GPCRs, including genetic variants, drugs, disease indications, ligands, structures, and interactions. Additionally, GPCRdb has been continuously updated and improved over the years, incorporating advanced technologies like AlphaFold2 for state-specific structure models, enhancing the understanding of GPCR biology and drug development.
 
-![GPCRdb webpage](image8.png)
+![GPCRdb webpage](image8.png "GPCRdb Webpage")
 
 #### API Access
 
